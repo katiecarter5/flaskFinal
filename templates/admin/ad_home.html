@@ -1,0 +1,15 @@
+{% extends './base.html' %}
+
+{% block body %}
+<div class="row">
+    <div class="col">
+        <a href="{{ url_for('ad_letter') }}">Edit Letters</a>
+    </div>
+    <div class="col">
+        <a href="{{ url_for('ad_color') }}">Edit Colors</a>
+    </div>
+    <div class="col">
+        <a href="{{ url_for('ad_shape') }}">Edit Shapes</a>
+    </div>
+</div>
+{% endblock %}

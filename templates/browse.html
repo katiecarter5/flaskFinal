@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="row">
+    <div class="col">
+        <h2>Letters in the Alphabet</h2>
+        <ul>
+            {% for letter in letters %}
+                <li><a href="{{ url_for('letter', name = letter.name) }}">{{ letter.name | title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col">
+        <h2>Basic Colors</h2>
+        <ul>
+            {% for color in colors %}
+                <li><a href="{{ url_for('color', name = color.name) }}">{{ color.name | title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col">
+        <h2>Basic Shapes</h2>
+        <ul>
+            {% for shape in shapes %}
+                <li><a href="{{ url_for('shape', name = shape.name) }}">{{ shape.name | title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
