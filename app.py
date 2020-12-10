@@ -178,6 +178,15 @@ def edit_letter(id):
     return render_template('admin/letter_form.html', name=letter.name, desc=letter.desc)
 
 
+@app.route('/delete_color/<id>')
+@flask_login.login_required
+def delete_letter(id):
+    letter = Letter.query.get_or_404(id)
+    db.session.delete(letter)
+    db.session.commit()
+    return redirect(url_for('ad_letter'))
+
+
 #color
 
 
@@ -219,7 +228,6 @@ def edit_color(id):
         color.name = request.form['name']
         color.desc = request.form['desc']
 
-
         error = None
 
         if not request.form['name']:
@@ -239,15 +247,6 @@ def delete_color(id):
     db.session.delete(color)
     db.session.commit()
     return redirect(url_for('ad_color'))
-
-
-# @app.route('/delete_color/<id>')
-# @flask_login.login_required
-# def delete_color(id):
-#     color = Color.query.get_or_404(id)
-#     db.session.delete(color)
-#     db.session.commit()
-#     return redirect(url_for('ad_color'))
 
 
 # shape
@@ -291,7 +290,6 @@ def edit_shape(id):
         shape.name = request.form['name']
         shape.desc = request.form['desc']
 
-
         error = None
 
         if not request.form['name']:
@@ -311,15 +309,6 @@ def delete_shape(id):
     db.session.delete(color)
     db.session.commit()
     return redirect(url_for('ad_shape'))
-
-
-# @app.route('/delete_shape/<id>')
-# @flask_login.login_required
-# def delete_shape(id):
-#     shape = Shape.query.get_or_404(id)
-#     db.session.delete(shape)
-#     db.session.commit()
-#     return redirect(url_for('ad_shape'))
 
 
 if __name__ == '__main__':
